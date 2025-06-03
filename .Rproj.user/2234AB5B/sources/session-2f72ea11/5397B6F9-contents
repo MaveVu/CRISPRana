@@ -1,9 +1,9 @@
-Package: CRISPRana
+Package: crispa
 Type: Package
-Title: CRISPRana: an R package for differential transcript usage analysis in CRISPR-edited cells
+Title: crispa: an R package for differential transcript usage analysis in CRISPR-edited cells
 Version: 0.1.0
 Author: Ngoc Minh Vu
-Maintainer: Ngoc Minh Vu <ngocminhv1@student.unimelb.edu.au>
+Maintainer: The package maintainer <https://github.com/MaveVu>
 Description: Performing differential transcript usage analysis between 2 gRNA groups
 License: What license is it under?
 Encoding: UTF-8
