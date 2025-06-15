@@ -7,7 +7,15 @@ rev_comp <- function(seq) {
     paste(collapse = "")
 }
 
-
+#' Generaate gRNA files containing gRNA-cell barcode mapping information
+#' @param ref_sgRNA The reference file containing gRNA names and sequences
+#' @param gRNA_R1 The Read 1 data containing cell barcodes and UMIs
+#' @param gRNA_R2 The Read 2 data containing gRNA sequences
+#' @param CB_file The cell barcode whitelist file
+#' @param cleared_CB The file containing cleared cell barcodes (no "-1")
+#' @param num_counts The threshold for filtering low-counts cell barcodes
+#' @param outdir The directory containing gRNA files
+#' @return A directory containing gRNA files
 #' @export
 gRNA_assign <- function(ref_sgRNA, gRNA_R1, gRNA_R2, CB_file, cleared_CB, num_counts = 10, outdir) {
   # Create output directory if it doesn't exist

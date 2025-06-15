@@ -1,3 +1,4 @@
+#' Function from \code{FLAMES}
 #' @importFrom reticulate import_from_path dict
 #' @importFrom basilisk basiliskRun
 #' @export

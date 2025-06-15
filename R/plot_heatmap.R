@@ -15,7 +15,17 @@ generate_sce <- function(final_sce, c1, c2, gene, min_entry = 5){
   return (sub_sce)
 }
 
-
+#' Create a heatmap visualizing cell-level transcript usage of a gene between 2 gRNA groups
+#' @param final_sce The \code{SingleCellExperiment} object with cell labels
+#' @param c1 The first gRNA group
+#' @param c2 The second gRNA group
+#' @param gene The gene of interest
+#' @param min_entry The threshold for the filtering step
+#' @param n_clusters The number of clusters for K-means
+#' @param random_seed The random seed
+#' @return A heatmap showing the cell-level transcript usage of the gene between
+#' 2 groups, with a column showing K-means clusters, and a column showing the
+#' total molecule counts of the gene in each cell
 #' @importFrom circlize colorRamp2 rand_color
 #' @importFrom ComplexHeatmap rowAnnotation Heatmap draw
 #' @importFrom grid unit grid.grabExpr

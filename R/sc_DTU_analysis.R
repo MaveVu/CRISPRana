@@ -43,6 +43,17 @@ filter_single_gRNA_cells <- function(sce, gRNA_dir) {
   return(final_sce)
 }
 
+#' Performing DTU analysis between 2 gRNA groups
+#' @param sce The \code{SingleCellExperiment} object generated from the \code{FLAMES} preprocessing step
+#' @param gRNA_dir The directory containg gRNA files
+#' @param method The chosen statistical method, containing "chisq" (Chi-squared),
+#' "multi" (multinomial), and "dir-multi" (Dirichlet-Multinomial)
+#' @param gRNA1 The first gRNA of interest
+#' @param gRNA2 The second gRNA of interest
+#' @param min_count The threshold used in the \code{FLAMES} filtering approach
+#' @param filter_by_entry The boolean value to change to \code{CRISPRana} filtering approach
+#' @param min_entry The threshold used in the \code{CRISPRana} filtrting approach
+#' @return a \code{tibble}
 #' @export
 sc_DTU_analysis <- function(sce, gRNA_dir, method, gRNA1, gRNA2, min_count = 0.001, filter_by_entry = FALSE, min_entry = 5) {
   # Filter cells with exactly 1 gRNA
