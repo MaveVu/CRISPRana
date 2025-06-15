@@ -173,6 +173,7 @@ gRNA_assign(
 )
 ```
 The output directory will look like this:
+
 ![](images/gRNA.png){#id .class width=600 height=100px}
 
 where each file contains cell barcodes mapped to that gene.
@@ -199,6 +200,7 @@ result <- sc_DTU_analysis(
 head(result)
 ```
 ![](images/chisq_FLAMES.png){#id .class width=700 height=120px}
+
 To perform the analysis with the Dirichlet-Multinomial method and `CRISPRana` filtering approach
 with threshold = 5, we run:
 ```{r}
