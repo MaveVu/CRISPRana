@@ -1,6 +1,5 @@
 #' @importFrom SingleCellExperiment counts rowData colData colLabels
-
-# filter cells with exactly 1 gRNA
+#' @export
 filter_single_gRNA_cells <- function(sce, gRNA_dir) {
   # Directory contains gRNA files
   files <- list.files(gRNA_dir, pattern = "\\.txt$", full.names = TRUE)
