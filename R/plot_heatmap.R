@@ -1,5 +1,8 @@
 #' @importFrom SingleCellExperiment counts rowData colData colLabels
-generate_sce <- function(final_sce, c1, c2, gene, min_entry = 5){
+generate_sce <- function(final_sce, c1, c2, gene, annot, min_entry = 5){
+  gtf <- import(annot)
+  gene_df <- as.data.frame(gtf[gtf$type == "gene"])
+  gene_map <- gene_df[, c("gene_id", "gene_name")]
   # Get the sub-sce for a specific gene and 2 gRNAs
   sub_sce <- final_sce[, colLabels(final_sce) %in% c(c1, c2)]
   gene_id <- subset(gene_map, gene_name == gene)$gene_id
@@ -20,6 +23,7 @@ generate_sce <- function(final_sce, c1, c2, gene, min_entry = 5){
 #' @param c1 The first gRNA group
 #' @param c2 The second gRNA group
 #' @param gene The gene of interest
+#' @param annot The annotation file
 #' @param min_entry The threshold for the filtering step
 #' @param n_clusters The number of clusters for K-means
 #' @param random_seed The random seed
@@ -31,7 +35,7 @@ generate_sce <- function(final_sce, c1, c2, gene, min_entry = 5){
 #' @importFrom grid unit grid.grabExpr
 #' @importFrom gridExtra grid.arrange
 #' @export
-plot_heatmap <- function(final_sce, c1, c2, gene, min_entry = 5, n_clusters = 3, random_seed = 0) {
+plot_heatmap <- function(final_sce, c1, c2, gene, annot, min_entry = 5, n_clusters = 3, random_seed = 0) {
   # Get the sub-sce for a specific gene and 2 gRNAs
   sce <- generate_sce(final_sce, c1, c2, gene, min_entry)
 
