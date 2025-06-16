@@ -54,8 +54,8 @@ if (!dir.exists(output)){
   dir.create(output)
 }
 
-# Create a config file to change the methods used in some methods such as
-# transcript identification, transcript quantification
+# Create a config file to change the methods used in some steps such as
+# transcript identification or transcript quantification
 config <- create_config(output)
 ```
 
@@ -160,7 +160,8 @@ sce
 ![](images/sce.png){#id .class width=500 height=200px}
 
 For gRNA preprocessing, we use the `gRNA_assign` function with gRNA sequencing data to produce
-gRNA-cell barcode mapping files, identifying which gene has been knocked out in each cell.
+gRNA-cell barcode mapping files, identifying which gene has been knocked out in each cell. `num_counts` is used as a threshold
+for filtering out cells with low molecule counts. 
 ```{r}
 gRNA_assign(
   ref_sgRNA = sgRNA_data, 
@@ -180,7 +181,7 @@ where each file contains cell barcodes mapped to that gene.
 
 ## DTU analysis
 Before using statistical methods for DTU analysis, we have a filtering step to select only the necessary
-information. Both the filtering step and DTU analysis were implemented in the `sc_DTU_analysis` function. The image below shows the filtering pipeline. We can change the filtering strategy from `FLAMES` approach to `CRISPRana` one by setting `filter_by_entry = TRUE`, and set the threshold for the transcript count in each group with `min_entry`.
+information. Both the filtering step and DTU analysis were implemented in the `sc_DTU_analysis` function. The image below shows the filtering pipeline. We can change the filtering strategy from `FLAMES` approach to `CRISPRana` by setting `filter_by_entry = TRUE`, and set the threshold for the transcript count in each group with `min_entry`.
 
 ![](images/filtering.png){#id .class width=700 height=300px}
 
